@@ -32,6 +32,11 @@ acme --set-default-ca --server letsencrypt
 acme  --issue -d $domainName --standalone -k ec-256
 acme --installcert -d $domainName --ecc  --key-file   /opt/tls/server.key   --fullchain-file /opt/tls/server.crt 
 
+#防火墙放行
+ufw allow 10086
+ufw allow 443
+
+
 #warp初始化
 warp-cli register
 warp-cli set-mode proxy
