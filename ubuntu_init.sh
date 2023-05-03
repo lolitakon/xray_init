@@ -10,6 +10,7 @@ fi
 
 #从仓库先安装部分软件
 apt-get update
+apt-get install net-tools
 apt-get install socat
 apt-get install nginx
 
