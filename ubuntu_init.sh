@@ -24,11 +24,14 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyr
 apt-get update
 apt-get install cloudflare-warp
 
+#xray安装
+
+
+#Luminati安装
 read -p "是否安装Luminati?(y/n)" isInstall
 if [ $isInstall = "y" ]; then 
   wget -qO- https://brightdata.com/static/lpm/luminati-proxy-latest-setup.sh | bash
 fi
-#Luminati安装
 
 #acme.sh申请证书
 mkdir /opt/tls
