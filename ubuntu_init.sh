@@ -24,8 +24,8 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyr
 apt-get update
 apt-get install cloudflare-warp
 
-#xray安装
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+#3x-ui安装
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 
 #Luminati安装
 read -p "是否安装Luminati?(y/n)" isInstall
