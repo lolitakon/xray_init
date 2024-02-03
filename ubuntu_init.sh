@@ -25,7 +25,7 @@ apt-get update
 apt-get install cloudflare-warp
 
 #xray安装
-
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
 
 #Luminati安装
 read -p "是否安装Luminati?(y/n)" isInstall
