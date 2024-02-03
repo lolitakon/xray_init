@@ -1,6 +1,6 @@
 #!/bin/bash
 #该shell是本人为了方便快速搭建科学上网工具制作
-#本脚本安装软件如下:1.acme.sh以及所需依赖socat 2.nginx 3.warp
+#本脚本安装软件如下:1.acme.sh以及所需依赖socat 2.nginx 3.warp 4.Luminati（可选）此为brightdata代理池提供的socks代理工具
 #无任何商业性质，原则上不允许转载，转载需询问我本人！
 id=`whoami`
 if [ $id != 'root' ]; then
@@ -24,6 +24,12 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyr
 apt-get update
 apt-get install cloudflare-warp
 
+read -p "是否安装Luminati?(y/n)" isInstall
+if [ $isInstall = "y" ]; then 
+  wget -qO- https://brightdata.com/static/lpm/luminati-proxy-latest-setup.sh | bash
+fi
+#Luminati安装
+
 #acme.sh申请证书
 mkdir /opt/tls
 systemctl stop nginx
@@ -44,6 +50,7 @@ warp-cli set-proxy-port 40000
 warp-cli connect
 #查询warp对应ip
 curl ifconfig.me --proxy socks5://127.0.0.1:40000
+
 
 echo "基础初始化完毕，请自行安装x-ui,修改/etc/nginx/nginx.conf配置文件"
 echo "warp可能无法使用脚本注册，如果netstat 40000端口没反应请手动注册"
