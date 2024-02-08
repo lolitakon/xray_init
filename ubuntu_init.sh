@@ -56,9 +56,8 @@ warp-cli connect
 curl ifconfig.me --proxy socks5://127.0.0.1:40000
 
 echo "luminati请自行开放防火墙与配置"
-echo "基础初始化完毕，请自行安装x-ui,修改/etc/nginx/nginx.conf配置文件"
+echo "基础初始化完毕，请自行初始化3x-ui（命令x-ui）,修改/etc/nginx/nginx.conf配置文件"
 echo "warp可能无法使用脚本注册，如果netstat 40000端口没反应请手动注册"
-echo "x-ui安装:bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)"
 echo "可参考https://raw.githubusercontent.com/lolitakon/study/main/Linux/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9B%B8%E5%85%B3/nginx%E4%BC%AA%E8%A3%85%E6%A8%A1%E6%9D%BF"
 
 
