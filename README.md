@@ -18,4 +18,4 @@
 
 `bash <(curl -Ls https://raw.githubusercontent.com/lolitakon/xray_init/main/ubuntu_init.sh)`
 
-##无任何商业性质，原则上不允许转载，转载需询问我本人！
+##无任何商业性质
