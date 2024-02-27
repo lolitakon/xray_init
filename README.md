@@ -4,7 +4,7 @@
 
 本脚本安装软件如下:
 
-1.acme.sh以及所需依赖socat 
+1.acme.sh以及所需依赖socat,同时自动申请ca证书
 
 2.nginx 
 
