@@ -10,7 +10,7 @@
 
 3.warp
 
-4.Luminati（可选），此为brightdata代理池提供的socks代理工具，~~它家的伪socks代理通过此工具实现~~目前brightdata已支持直接socks代理
+4.Luminati（可选），此为brightdata代理池提供的socks代理工具，~~它家的伪socks代理通过此工具实现~~，目前brightdata已支持直接socks代理
 
 5.3xui 一个基于xray的web面板
 
