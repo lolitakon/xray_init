@@ -44,7 +44,6 @@ acme  --issue -d $domainName --standalone -k ec-256
 acme --installcert -d $domainName --ecc  --key-file   /opt/tls/server.key   --fullchain-file /opt/tls/server.crt 
 
 #防火墙放行
-ufw allow 10086
 ufw allow 443
 
 
