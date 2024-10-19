@@ -38,7 +38,8 @@ fi
 #acme.sh申请证书
 mkdir /opt/tls
 systemctl stop nginx
-read -p "请输入你的域名" domainName
+echo "acme.sh证书申请"
+read -p "请输入你的域名：" domainName
 acme --set-default-ca --server letsencrypt
 acme  --issue -d $domainName --standalone -k ec-256
 acme --installcert -d $domainName --ecc  --key-file   /opt/tls/server.key   --fullchain-file /opt/tls/server.crt 
