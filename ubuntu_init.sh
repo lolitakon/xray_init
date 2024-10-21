@@ -6,13 +6,13 @@ if [ $id != 'root' ]; then
 	echo "错误！当前用户不是root用户！！" 
 fi
 
-#从仓库先安装部分软件
+# 从仓库先安装部分软件
 apt-get update
 apt-get install net-tools
 apt-get install socat
 apt-get install nginx
 
-#acme.sh安装
+# acme.sh安装
 curl https://get.acme.sh | sh
 ln /root/.acme.sh/acme.sh /usr/local/bin/acme
 
@@ -20,22 +20,22 @@ ln /root/.acme.sh/acme.sh /usr/local/bin/acme
 apt install libnginx-mod-http-geoip2
 apt install geoipupdate
 
-#warp安装
+# warp安装
 curl https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
 apt-get update
 apt-get install cloudflare-warp
 
-#3x-ui安装
+# 3x-ui安装
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 
 #Luminati安装
-read -p "是否安装Luminati?(y/n)" isInstall
+read -p "是否安装Luminati?(y/n(默认))" isInstall
 if [ $isInstall = "y" ]; then 
   wget -qO- https://brightdata.com/static/lpm/luminati-proxy-latest-setup.sh | bash
 fi
 
-#acme.sh申请证书
+# acme.sh申请证书
 mkdir /opt/tls
 systemctl stop nginx
 echo "acme.sh证书申请"
@@ -44,16 +44,17 @@ acme --set-default-ca --server letsencrypt
 acme  --issue -d $domainName --standalone -k ec-256
 acme --installcert -d $domainName --ecc  --key-file   /opt/tls/server.key   --fullchain-file /opt/tls/server.crt 
 
-#防火墙放行
+# 防火墙放行
+ufw enable
 ufw allow 443
 
 
-#warp初始化
-warp-cli register
-warp-cli set-mode proxy
-warp-cli set-proxy-port 40000
+# warp初始化
+warp-cli mode proxy
+warp-cli proxy port 40000
+warp-cli registration new
 warp-cli connect
-#查询warp对应ip
+# 查询warp对应ip
 curl ifconfig.me --proxy socks5://127.0.0.1:40000
 
 echo "luminati请自行开放防火墙与配置"
