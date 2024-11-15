@@ -15,9 +15,15 @@ if [ $id != 'root' ] or [ $os_release == "unsuitable" ]; then
 	echo "错误！当前用户不是root用户或所使用发行版未适配" 
 else
 	# 从仓库先安装部分软件
-	apt-get update
- 	apt-get install sudo
-  	apt-get install gpg
+ 	apt-get update
+  	# debian需要额外安装和配置部分内容
+ 	if [ $os_release = "Debian" ]; then
+ 		apt-get install sudo
+   		apt-get install gpg
+     		apt-get install ufw
+       		export PATH=$PATH:/usr/sbin
+	 	alias ll="ls -l"
+   	fi
 	apt-get install net-tools
 	apt-get install socat
 	apt-get install nginx
@@ -55,8 +61,6 @@ else
 	acme --installcert -d $domainName --ecc  --key-file   /opt/tls/server.key   --fullchain-file /opt/tls/server.crt 
 	
 	# 防火墙放行
-	apt insatll ufw
- 	export PATH=$PATH:/usr/sbin
 	ufw allow 443
  	ufw allow 80
 	echo "请等待脚本完成后自行放行ssh并ufw enable"
