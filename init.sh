@@ -22,9 +22,8 @@ else
    		apt-get install gpg
      		
        		apt-get install ufw
-       		export PATH=$PATH:/usr/sbin
-	 	
-   		alias ll="ls -l"
+       		echo "export PATH=$PATH:/usr/sbin" | tee -a /etc/profile
+   		echo "alias ll="ls -l"" | tee -a /etc/profile
 	fi
  	
  	apt-get install wget
