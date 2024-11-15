@@ -16,10 +16,11 @@ if [ $id != 'root' ] or [ $os_release == "unsuitable" ]; then
 else
 	# 从仓库先安装部分软件
 	apt-get update
+ 	apt-get install sudo
+  	apt-get install gpg
 	apt-get install net-tools
 	apt-get install socat
 	apt-get install nginx
- 	apt-get install sudo
 	
 	# acme.sh安装
 	curl https://get.acme.sh | sh
