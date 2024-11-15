@@ -56,9 +56,8 @@ else
 	apt insatll ufw
 	ufw allow 443
  	ufw allow 80
-  	ufw allow 22
-  	ufw enable
-	
+	echo "请等待脚本完成后自行放行ssh并ufw enable"
+ 	sleep 1s
 	
 	# warp初始化
 	warp-cli mode proxy
