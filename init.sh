@@ -56,6 +56,7 @@ else
 	
 	# 防火墙放行
 	apt insatll ufw
+ 	export PATH=$PATH:/usr/sbin
 	ufw allow 443
  	ufw allow 80
 	echo "请等待脚本完成后自行放行ssh并ufw enable"
