@@ -20,10 +20,15 @@ else
  	if [ $os_release = "Debian" ]; then
  		apt-get install sudo
    		apt-get install gpg
-     		apt-get install ufw
+     		
+       		apt-get install ufw
        		export PATH=$PATH:/usr/sbin
-	 	alias ll="ls -l"
-   	fi
+	 	
+   		alias ll="ls -l"
+	fi
+ 	
+ 	apt-get install wget
+  	apt-get install curl
 	apt-get install net-tools
 	apt-get install socat
 	apt-get install nginx
@@ -34,8 +39,15 @@ else
 	
 	# geoip安装
 	apt install libnginx-mod-http-geoip2
-	apt install geoipupdate
-	
+ 	
+ 	if [ $os_release = "Debian" ]; then
+		wget https://github.com/maxmind/geoipupdate/releases/download/v7.0.1/geoipupdate_7.0.1_linux_amd64.deb
+  		dpkg -i geoipupdate_7.0.1_linux_amd64.deb
+    		rm -rf geoipupdate_7.0.1_linux_amd64.deb
+    	elif [ $os_release = "Ubuntu" ]; then
+		apt install geoipupdate
+	fi
+ 
 	# warp安装
 	curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
 	echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
