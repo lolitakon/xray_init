@@ -23,7 +23,8 @@ else
      		
        		apt-get install ufw
        		echo "export PATH=$PATH:/usr/sbin" | tee -a /etc/profile
-   		echo "alias ll="ls -l"" | tee -a /etc/profile
+   		echo "alias ll='ls -l'" | tee -a /etc/profile
+     		source /etc/profile
 	fi
  	
  	apt-get install wget
