@@ -67,8 +67,15 @@ else
 	systemctl stop nginx
 	echo "acme.sh证书申请"
 	read -p "请输入你的域名：" domainName
+ 	read -p "是否使用IPV6申请?(y/n（默认）)："  isIpv6
 	acme --set-default-ca --server letsencrypt
-	acme  --issue -d $domainName --standalone -k ec-256
+ 	
+  	if [ $isIpv6 = "y" ]; then 
+	  acme  --issue -d $domainName --standalone -k ec-256 --listen-v6
+	else
+	  acme  --issue -d $domainName --standalone -k ec-256
+ 	fi
+  	
 	acme --installcert -d $domainName --ecc  --key-file   /opt/tls/server.key   --fullchain-file /opt/tls/server.crt 
 	
 	# 防火墙放行
