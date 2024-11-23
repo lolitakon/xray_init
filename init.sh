@@ -57,7 +57,7 @@ else
 	# 3x-ui安装
 	bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 	
-	#Luminati安装
+	# Luminati安装
 	read -p "是否安装Luminati?(y/n(默认))" isInstall
 	if [ $isInstall = "y" ]; then 
 	  wget -qO- https://brightdata.com/static/lpm/luminati-proxy-latest-setup.sh | bash
