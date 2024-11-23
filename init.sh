@@ -92,6 +92,9 @@ else
 	warp-cli connect
 	# 查询warp对应ip
 	curl ifconfig.me --proxy socks5://127.0.0.1:40000
+
+ 	# 修改时区
+  	timedatectl set-timezone Asia/Shanghai
 	
 	echo "luminati请自行开放防火墙与配置"
 	echo "基础初始化完毕，请自行初始化3x-ui（命令x-ui）,修改/etc/nginx/nginx.conf配置文件"
