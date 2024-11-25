@@ -106,10 +106,11 @@ else
  	
  	# 修改时区
   	timedatectl set-timezone Asia/Shanghai
-   	reboot
 	
-	echo "luminati请自行开放防火墙与配置"
 	echo "基础初始化完毕，请自行初始化3x-ui（命令x-ui）,修改/etc/nginx/nginx.conf配置文件"
 	echo "warp可能无法使用脚本注册，如果netstat 40000端口没反应请手动注册"
 	echo "可参考https://raw.githubusercontent.com/lolitakon/study/main/Linux/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%9B%B8%E5%85%B3/nginx%E4%BC%AA%E8%A3%85%E6%A8%A1%E6%9D%BF"
+ 	echo -e "\033[31m由于修改时区，系统将在3s后重启!\033[0m"
+  	sleep 3s
+   	init 6
 fi
