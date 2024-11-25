@@ -94,7 +94,7 @@ else
 	curl ifconfig.me --proxy socks5://127.0.0.1:40000
 
 	# 备份默认配置文件并清空原文件（可选）
- 	read -p "是否备份配置文件并清空?(y/n(默认))" isModConfig
+ 	read -p "是否备份配置文件并清空?(y/n(默认)):" isModConfig
  	if [ $isModConfig = "y" ]; then
   	  cd /etc/
 	  cp GeoIP.conf GeoIP.conf.default
