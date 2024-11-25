@@ -93,8 +93,20 @@ else
 	# 查询warp对应ip
 	curl ifconfig.me --proxy socks5://127.0.0.1:40000
 
+	# 备份默认配置文件并清空原文件（可选）
+ 	read -p "是否备份配置文件并清空?(y/n(默认))" isModConfig
+ 	if [ $isModConfig = "y" ]; then
+  	  cd /etc/
+	  cp GeoIP.conf GeoIP.conf.default
+   	  echo "" > GeoIP.conf
+   	  cd nginx
+      	  cp nginx.conf nginx.conf.default
+	  echo "" > nginx.conf
+	fi
+ 	
  	# 修改时区
   	timedatectl set-timezone Asia/Shanghai
+   	reboot
 	
 	echo "luminati请自行开放防火墙与配置"
 	echo "基础初始化完毕，请自行初始化3x-ui（命令x-ui）,修改/etc/nginx/nginx.conf配置文件"
