@@ -69,12 +69,19 @@ else
 	echo "acme.sh证书申请"
 	read -p "请输入你的域名：" domainName
  	read -p "是否使用IPV6申请?(y/n（默认）)："  isIpv6
+  	read -p "请选择申请模式（standalone(s)/nginx(n)）：" mode
+   	if [ $mode = "n" ]; then 
+	  mode="nginx"
+	else
+	  mode="standalone"
+ 	fi
+
 	acme --set-default-ca --server letsencrypt
  	
   	if [ $isIpv6 = "y" ]; then 
-	  acme  --issue -d $domainName --standalone -k ec-256 --listen-v6
+	  acme  --issue -d $domainName --$mode -k ec-256 --listen-v6
 	else
-	  acme  --issue -d $domainName --standalone -k ec-256
+	  acme  --issue -d $domainName --$mode -k ec-256
  	fi
   	
 	acme --installcert -d $domainName --ecc  --key-file   /opt/tls/server.key   --fullchain-file /opt/tls/server.crt 
