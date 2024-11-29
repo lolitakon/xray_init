@@ -11,7 +11,7 @@ else
         os_release="unsuitable"
 fi
 
-if [ $id != 'root' ] or [ $os_release == "unsuitable" ]; then
+if [ $id != 'root' ] or [ $os_release = "unsuitable" ]; then
 	echo "错误！当前用户不是root用户或所使用发行版未适配" 
 else
 	# 从仓库先安装部分软件
