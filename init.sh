@@ -69,7 +69,7 @@ else
 	echo "acme.sh证书申请"
 	read -p "请输入你的域名：" domainName
  	read -p "是否使用IPV6申请?(y/n（默认）)："  isIpv6
-  	read -p "请选择申请模式（standalone(s)/nginx(n)）：" mode
+  	read -p "请选择申请模式（standalone(s 默认)/nginx(n)）：" mode
    	if [ $mode = "n" ]; then 
 	  mode="nginx"
 	else
