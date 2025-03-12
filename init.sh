@@ -13,8 +13,8 @@ fi
 
 if [ $id != 'root' ] || [ $os_release = "unsuitable" ]; then
 	echo "错误！当前用户不是root用户或所使用发行版未适配"
- 	read -p "不建议您继续执行脚本，请ctr+c退出执行，如果仍需强制执行脚本，将会默认os为Ubuntu并已取得root来执行"
-  	os_release="Ubuntu"
+ 	read -p "不建议您继续执行脚本，请ctr+c退出执行，如果仍需强制执行脚本，将会默认os为Debian并已取得root来执行"
+  	os_release="Debian"
 fi
 
 
