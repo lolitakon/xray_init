@@ -26,7 +26,7 @@ if [ $os_release = "Debian" ]; then
 	apt-get install gpg
 	
 	apt-get install ufw
-	echo "export PATH=$PATH:/usr/sbin" | tee -a /etc/profile
+	echo 'export PATH=$PATH:/usr/sbin' | tee -a /etc/profile
 	echo "alias ll='ls -l'" | tee -a /etc/profile
 	source /etc/profile
 fi
