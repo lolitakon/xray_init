@@ -24,6 +24,7 @@ apt-get update
 if [ $os_release = "Debian" ]; then
 	apt-get install sudo
 	apt-get install gpg
+ 	apt-get install lsb-release
 	
 	apt-get install ufw
 	echo 'export PATH=$PATH:/usr/sbin' | tee -a /etc/profile
